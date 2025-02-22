@@ -1,0 +1,9 @@
+#include <stdio.h>
+
+int main()
+{
+    int var = 10;
+	//replace the '_' below with constant number 10 to print it.
+	printf("%d", var);
+	return 0;
+}
