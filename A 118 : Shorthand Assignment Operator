@@ -1,0 +1,12 @@
+#include <stdio.h> 
+
+int main()
+{
+	int A, B;
+	//Increment A by B and print the result. Repeat three times.
+    scanf("%d %d", &A, &B);
+   
+	printf("%d ", A + B);    
+    printf("%d ", A + 2 * B); 
+    printf("%d", A + 3 * B);  
+	return 0;
