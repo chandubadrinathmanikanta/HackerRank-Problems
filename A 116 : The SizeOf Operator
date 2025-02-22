@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main()
+{
+    // Declare variables to store the sizes of each data type
+    int int_size = sizeof(int);
+    int float_size = sizeof(float);
+    int long_long_size = sizeof(long long int);
+    int double_size = sizeof(double);
+    int char_size = sizeof(char);
+    
+    // Store the sizes in an array
+    int sizes[] = {int_size, float_size, long_long_size, double_size, char_size};
+    
+    // Sorting the sizes array in increasing order (using simple comparison)
+    for (int i = 0; i < 4; i++) {
+        for (int j = i + 1; j < 5; j++) {
+            if (sizes[i] > sizes[j]) {
+                // Swap the values
+                int temp = sizes[i];
+                sizes[i] = sizes[j];
+                sizes[j] = temp;
+            }
+        }
+    }
+    
+    // Print the sizes in increasing order
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", sizes[i]);
+    }
+
+    return 0;
+}
