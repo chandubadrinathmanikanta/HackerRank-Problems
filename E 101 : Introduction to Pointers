@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<stdlib.h> // This library contains the function malloc.
+
+int main()
+{
+    // Allocate memory dynamically for an integer
+    int *var = (int*) malloc(sizeof(int)); 
+
+    // Check if malloc failed to allocate memory
+    if (var == NULL) {
+        printf("Memory allocation failed\n");
+        return 1;  // Exit the program if memory allocation fails
+    }
+
+    // Input the value to be stored in the allocated memory
+    scanf("%d", var);  // No need for '&' because var is already a pointer
+
+    // Print the value stored in the allocated memory
+    printf("%d\n", *var);  // Dereference the pointer to access the value
+
+    // Free the allocated memory
+    free(var);
+
+    return 0;
+}
