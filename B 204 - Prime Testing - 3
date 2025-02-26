@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+#define MAX_N 1000000
+
+// Precompute the primality of all numbers from 1 to MAX_N using the sieve of Eratosthenes
+bool is_prime[MAX_N + 1];
+
+void sieve() {
+    // Initialize all numbers as prime except 0 and 1
+    is_prime[0] = is_prime[1] = false;
+    for (int i = 2; i <= MAX_N; i++) {
+        is_prime[i] = true;
+    }
+
+    // Sieve of Eratosthenes to mark non-prime numbers
+    for (int i = 2; i * i <= MAX_N; i++) {
+        if (is_prime[i]) {
+            for (int j = i * i; j <= MAX_N; j += i) {
+                is_prime[j] = false;
+            }
+        }
+    }
+}
+
+int main() {
+    int Q;
+    scanf("%d", &Q);
+
+    // Precompute primes
+    sieve();
+
+    // Process each query
+    for (int i = 0; i < Q; i++) {
+        int N;
+        scanf("%d", &N);
+
+        if (is_prime[N]) {
+            printf("yes\n");
+        } else {
+            printf("no\n");
+        }
+    }
+
+    return 0;
+}
