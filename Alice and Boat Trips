@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    int n, c, m;
+    scanf("%d %d %d", &n, &c, &m); // Read n, c, m
+
+    int passengers[n];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &passengers[i]); // Read the number of passengers for each trip
+    }
+
+    // Check if all trips can be completed within the boat limit
+    for (int i = 0; i < n; i++) {
+        int boats_needed = (passengers[i] + c - 1) / c; // Calculate boats needed for current trip
+        if (boats_needed > m) {
+            printf("No\n");
+            return 0; // If any trip requires more boats than available, print No and exit
+        }
+    }
+
+    printf("Yes\n"); // If all trips are possible, print Yes
+    return 0;
+}
