@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+#include <stdio.h>
+
+int main() {
+    int X, Y;  // Declare two variables to store the previous and current ratings
+    
+    // Input the previous and current ratings
+    scanf("%d %d", &X, &Y);
+    
+   
+    if (X == Y) {
+        printf("Did not participate\n");
+    } else if (Y > X) {
+        printf("Performed well\n");
+    } else {
+        printf("Did not perform well\n");
+    }
+    
+    return 0;
+}
