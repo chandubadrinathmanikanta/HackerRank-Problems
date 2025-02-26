@@ -1,0 +1,28 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main()
+{
+	int marks;
+	char grade;
+	cin>>marks;
+	//write the code to assign the grade
+    if(marks >= 76 && marks <=100){
+        cout<<"A" <<endl;
+    }
+	else if(marks >= 51 && marks <=75){
+        cout<<"B" <<endl;
+    }
+    if(marks >= 26 && marks <=50){
+        cout<<"C" <<endl;
+    }
+    if(marks >= 0 && marks <=25){
+        cout<<"D" <<endl;
+    }
+	return 0;
+}
