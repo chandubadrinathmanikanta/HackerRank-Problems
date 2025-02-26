@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    // Declare an array to store the strengths of the 5 sons
+    int S[5];
+    
+    // Read the five space-separated integers into the array
+    for (int i = 0; i < 5; i++) {
+        scanf("%d", &S[i]);
+    }
+    
+    // Calculate the total strength by summing the elements of the array
+    int total_strength = 0;
+    for (int i = 0; i < 5; i++) {
+        total_strength += S[i];
+    }
+    
+    // Output the total strength
+    printf("%d\n", total_strength);
+    
+    return 0;
+}
