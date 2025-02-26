@@ -1,0 +1,35 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<ctype.h>
+
+char* newstr(char* str)
+{
+    int n = strlen(str);
+    char* res = (char*)malloc(sizeof(char) * (n + 1)); // Use malloc to allocate memory for the result string
+    int i;
+    
+    for (i = 0; i < n; i++)
+    {
+        if (islower(str[i]))
+            res[i] = toupper(str[i]);
+        else
+            res[i] = tolower(str[i]);
+    }
+
+    res[n] = '\0';  // Null-terminate the string
+    return res;     // Return the dynamically allocated string
+}
+
+int main()
+{
+    char str[50];
+    fgets(str, sizeof(str), stdin); // Safer alternative to gets()
+    
+    char* new_str = newstr(str);    // Get the toggled case string
+    puts(new_str);                   // Print the new string
+    
+    free(new_str);                   // Don't forget to free the allocated memory
+    
+    return 0;
+}
