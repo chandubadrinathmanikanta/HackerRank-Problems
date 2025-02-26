@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+    int* arr = (int*) malloc(sizeof(int) * 3); // Initial allocation for 3 integers
+    int i, N;
+
+    // Input the value of N
+    scanf("%d", &N);
+
+    // Reallocate memory to accommodate N integers
+    arr = (int*) realloc(arr, sizeof(int) * N);
+
+    // Input N integers and store them in the array
+    for(i = 0; i < N; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Print the array in reverse order
+    for(i = N - 1; i >= 0; i--) {
+        printf("%d ", arr[i]);
+    }
+
+    // Free the allocated memory
+    free(arr);
+
+    return 0;
+}
