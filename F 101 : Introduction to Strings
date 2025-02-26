@@ -1,0 +1,13 @@
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+    // initialise string here
+    char str[] = "Hello World!";
+    
+    // print string here using printf
+    printf("%s", str);
+    
+    return 0;
+}
