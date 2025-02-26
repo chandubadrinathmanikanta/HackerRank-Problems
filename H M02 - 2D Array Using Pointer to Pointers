@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main() {
+    char **str_arr;
+    char *result;  // This will hold the final concatenated string
+    int i;
+
+    // Allocate memory for the array of 5 strings (char pointers)
+    str_arr = (char**) malloc(5 * sizeof(char*));
+
+    // Allocate memory for each string (let's assume each string has a max length of 100)
+    for (i = 0; i < 5; i++) {
+        str_arr[i] = (char*) malloc(100 * sizeof(char));
+    }
+
+    // Take 5 input strings from the user
+    for (i = 0; i < 5; i++) {
+        fgets(str_arr[i], 100, stdin);  // Use fgets to read strings with spaces
+        str_arr[i][strcspn(str_arr[i], "\n")] = 0; // Remove the newline character added by fgets
+    }
+
+    // Allocate memory for the result string (sum of all string lengths)
+    result = (char*) malloc(5 * 100 * sizeof(char));  // 5 strings, each max 100 chars
+
+    // Initialize the result string to be empty
+    result[0] = '\0';
+
+    // Concatenate all strings
+    for (i = 0; i < 5; i++) {
+        strcat(result, str_arr[i]);
+    }
+
+    // Print the concatenated result
+    puts(result);
+
+    // Free allocated memory
+    for (i = 0; i < 5; i++) {
+        free(str_arr[i]);
+    }
+    free(str_arr);
+    free(result);
+
+    return 0;
+}
