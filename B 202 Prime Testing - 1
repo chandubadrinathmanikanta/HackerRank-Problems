@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <math.h>
+
+int is_prime(int N) {
+    // Special case: 1 is not prime
+    if (N == 1) return 0;
+
+    // 2 is the only even prime number
+    if (N == 2) return 1;
+
+    // All other even numbers are not prime
+    if (N % 2 == 0) return 0;
+
+    // Check divisibility from 3 to sqrt(N), only odd numbers
+    int limit = (int)sqrt(N);
+    for (int i = 3; i <= limit; i += 2) {
+        if (N % i == 0) return 0;  // N is divisible by i, not prime
+    }
+
+    // If no divisors were found, N is prime
+    return 1;
+}
+
+int main() {
+    int N;
+    scanf("%d", &N);
+
+    if (is_prime(N)) {
+        printf("yes\n");
+    } else {
+        printf("no\n");
+    }
+
+    return 0;
+}
