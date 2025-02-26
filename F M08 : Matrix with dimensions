@@ -1,0 +1,62 @@
+def rotate_90(mat):
+    """Rotates the matrix 90 degrees clockwise."""
+    n = len(mat)
+    return [[mat[n - 1 - j][i] for j in range(n)] for i in range(n)]
+
+def handle_operations(N, matrix, operations):
+    original_matrix = [row[:] for row in matrix]  # Copy of the original matrix
+    current_matrix = [row[:] for row in matrix]   # Matrix with applied rotations
+    rotation_count = 0
+    
+    for operation in operations:
+        if operation[0] == 'A':
+            # Rotation operation, rotate by S degrees
+            S = int(operation[1])
+            # Normalize the degree to a number of 90-degree rotations
+            rotations = (S // 90) % 4  # Only need to rotate by 0, 90, 180, or 270 degrees
+            
+            # Apply the rotations
+            for _ in range(rotations):
+                current_matrix = rotate_90(current_matrix)
+            rotation_count += rotations
+        
+        elif operation[0] == 'Q':
+            # Query operation, get the element at (K, L)
+            K, L = int(operation[1]), int(operation[2])
+            # Convert to zero-indexed
+            print(current_matrix[K-1][L-1])
+        
+        elif operation[0] == 'U':
+            # Update operation, update the original matrix
+            X, Y, Z = int(operation[1]), int(operation[2]), int(operation[3])
+            # Update the original matrix
+            original_matrix[X-1][Y-1] = Z
+            # Recompute the current matrix from the original with the current rotations
+            current_matrix = [row[:] for row in original_matrix]
+            for _ in range(rotation_count):
+                current_matrix = rotate_90(current_matrix)
+
+def main():
+    # Read the matrix size
+    N = int(input().strip())
+    
+    # Read the matrix itself
+    matrix = []
+    for _ in range(N):
+        matrix.append(list(map(int, input().strip().split())))
+    
+    # Prepare for operations
+    operations = []
+    
+    while True:
+        line = input().strip()
+        if line == '-1':
+            break
+        op_parts = line.split()
+        operations.append(op_parts)
+    
+    # Handle the operations
+    handle_operations(N, matrix, operations)
+
+if __name__ == '__main__':
+    main()
