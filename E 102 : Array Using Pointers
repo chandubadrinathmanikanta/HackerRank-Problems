@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<stdlib.h> // This library contains the function malloc.
+
+int main()
+{
+    int i, N, sum = 0;
+    
+    // Read the size of the array
+    scanf("%d", &N);
+    
+    // Dynamically allocate memory for an array of N integers
+    int *arr = (int*) malloc(sizeof(int) * N); // Memory allocation for N integers
+    
+    // Check if malloc succeeded in allocating memory
+    if (arr == NULL) {
+        printf("Memory allocation failed\n");
+        return 1;  // Exit if memory allocation fails
+    }
+
+    // Read the elements into the allocated memory using pointer arithmetic
+    for (i = 0; i < N; i++) {
+        scanf("%d", (arr + i)); // Can also write &arr[i];
+    }
+
+    // Sum the elements using pointer arithmetic
+    for (i = 0; i < N; i++) {
+        sum += *(arr + i); // Can also write arr[i];
+    }
+
+    // Print the sum of the elements
+    printf("%d\n", sum);
+    
+    // Free the dynamically allocated memory
+    free(arr);
+    
+    return 0;
+}
