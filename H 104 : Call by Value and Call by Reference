@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+// Function to calculate 2^exponent and store the result in res
+void power(int *res, int exponent) {
+    *res = 1 << exponent;  // Shift 1 left by 'exponent' places, equivalent to 2^exponent
+}
+
+int main() {
+    int res, val;
+    scanf("%d", &val);  // Read the exponent value from user input
+    power(&res, val);    // Call power function, passing the address of res
+    printf("%d", res);   // Print the result stored in res
+    return 0;
+}
