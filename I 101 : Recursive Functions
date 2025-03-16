@@ -1,0 +1,12 @@
+#include<stdio.h>
+void func(int n)//modify this function so it prints numbers in reverse
+{
+	if (n > 5) return; //this is the base case.
+	func(n + 1);
+    printf("%d ", n);
+}//Hint : you can change the order of statements in the function to achieve your goal.
+int main()
+{
+	func(1);
+	return 0;
+}
