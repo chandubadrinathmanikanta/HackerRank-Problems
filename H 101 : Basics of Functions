@@ -1,0 +1,11 @@
+#include<stdio.h>
+//write your function print() here
+void print(){
+    printf("Hello World!\n");
+}
+
+int main()
+{
+	print();
+	return 0;
+}
